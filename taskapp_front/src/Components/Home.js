@@ -43,7 +43,7 @@ const Home = (props) => {
     if(!userloggedin){navigate('/login');}
     setsearch(e.target.value);
   }
-  const searchedtasks = !search? alltasks: alltasks.filter((task) =>task.title.toLowerCase().includes(search.toLowerCase()) 
+  const searchedtasks = !search? (alltasks||[]):( alltasks||[]).filter((task) =>task.title.toLowerCase().includes(search.toLowerCase()) 
   ||task.description.toLowerCase().includes(search.toLowerCase()));
   const filteredcurrtask=filter==='all'?searchedtasks:searchedtasks.filter((task)=>task.status===filter);
   const totalPages = Math.ceil(filteredcurrtask.length / 5);
